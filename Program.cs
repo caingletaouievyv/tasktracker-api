@@ -1,3 +1,5 @@
+// TaskTrackerApi/Program.cs
+
 using TaskTrackerApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
@@ -106,6 +108,7 @@ using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    var context = scope.ServiceProvider.GetRequiredService<TaskDbContext>();
 
     string[] roles = { "Admin", "User" };
 
@@ -144,6 +147,61 @@ using (var scope = app.Services.CreateScope())
         {
             await userManager.AddToRoleAsync(admin, "Admin");
         }
+    }
+
+    if (await userManager.FindByNameAsync("demo_user1") == null &&
+    await userManager.FindByNameAsync("demo_user2") == null)
+    {
+        var demoUser1 = new ApplicationUser
+        {
+            UserName = "demo_user1",
+            Email = "demo1@example.com",
+            EmailConfirmed = true
+        };
+        await userManager.CreateAsync(demoUser1, "DemoUser123!");
+        await userManager.AddToRoleAsync(demoUser1, "User");
+
+        var demoUser2 = new ApplicationUser
+        {
+            UserName = "demo_user2",
+            Email = "demo2@example.com",
+            EmailConfirmed = true
+        };
+        await userManager.CreateAsync(demoUser2, "DemoUser123!");
+        await userManager.AddToRoleAsync(demoUser2, "User");
+
+        var now = DateTime.UtcNow;
+
+        var tasks = new List<TaskItem>
+    {
+        new TaskItem
+        {
+            Title = "Welcome Task",
+            Description = "This is your first task!",
+            DueDate = now.AddDays(3),
+            IsCompleted = false,
+            UserId = demoUser1.Id
+        },
+        new TaskItem
+        {
+            Title = "Try completing a task",
+            Description = "Mark this one as done to test!",
+            DueDate = now.AddDays(5),
+            IsCompleted = false,
+            UserId = demoUser1.Id
+        },
+        new TaskItem
+        {
+            Title = "Second user's task",
+            Description = "Task for another demo user",
+            DueDate = now.AddDays(1),
+            IsCompleted = true,
+            UserId = demoUser2.Id
+        }
+    };
+
+        context.TaskItems.AddRange(tasks);
+        await context.SaveChangesAsync();
     }
 }
 
