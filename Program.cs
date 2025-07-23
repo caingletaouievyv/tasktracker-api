@@ -158,7 +158,7 @@ using (var scope = app.Services.CreateScope())
             Email = "demo1@example.com",
             EmailConfirmed = true
         };
-        await userManager.CreateAsync(demoUser1, "DemoUser123!");
+        await userManager.CreateAsync(demoUser1, "YourPassword123!");
         await userManager.AddToRoleAsync(demoUser1, "User");
 
         var demoUser2 = new ApplicationUser
@@ -167,7 +167,7 @@ using (var scope = app.Services.CreateScope())
             Email = "demo2@example.com",
             EmailConfirmed = true
         };
-        await userManager.CreateAsync(demoUser2, "DemoUser123!");
+        await userManager.CreateAsync(demoUser2, "YourPassword123!");
         await userManager.AddToRoleAsync(demoUser2, "User");
 
         var now = DateTime.UtcNow;
