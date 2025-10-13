@@ -1,0 +1,28 @@
+# .dockerignore
+
+# Ignore .NET build outputs
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Test projects
+TaskTrackerApi.Tests/
