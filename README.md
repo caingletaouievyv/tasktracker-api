@@ -13,6 +13,56 @@ Designed for lightweight deployment using an in-memory database, ideal for demos
 
 ---
 
+### Admin Dashboard
+
+#### Users Tab
+**View Users**
+![Demo 1 – View Users](./Tasktracker/demo1.gif)
+
+**Edit Role**
+_Before editing the role_
+![Demo 2 – Before Editing Role](./Tasktracker/demo2.gif)
+
+_After editing the role_
+![Demo 3 – After Editing Role](./Tasktracker/demo3.gif)
+
+**Delete Users**
+![Demo 4 – Delete Users](./Tasktracker/demo4.gif)
+
+#### Tasks Tab
+**View Tasks**
+![Demo 5 – View Tasks](./Tasktracker/demo5.gif)
+
+**Update Task**
+![Demo 6 – Update Task](./Tasktracker/demo6.gif)
+
+**Delete User Tasks**
+![Demo 7 – Delete Tasks](./Tasktracker/demo7.gif)
+
+#### Export
+**Both tabs support CSV and PDF exports**
+![Demo 8 – Export Data](./Tasktracker/demo8.gif)
+
+### User Dashboard
+![Demo 9 – User Dashboard](./Tasktracker/demo9.gif)
+
+Includes full task management capabilities:
+- Create, update, delete tasks  
+- Filter and sort tasks  
+- Export tasks to CSV or PDF
+
+---
+
+## Features
+- Role-based authentication (Admin/User)
+- Dark/Light theme toggle with persistence
+- Task management (Create, Update, Delete)
+- PDF and CSV export
+- Token refresh and session handling
+- Responsive UI for all device sizes
+
+---
+
 ## Tech Stack
 
 * ASP.NET Core 9 Web API
